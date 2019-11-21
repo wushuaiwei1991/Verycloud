@@ -1,0 +1,68 @@
+Trying 10.1.98.1...
+Connected to 10.1.98.1.
+Escape character is '^]'.
+
+>>User name:haoyunhe
+>>User password:
+
+
+  Huawei Integrated Access Software (MA5608T).
+  Copyright(C) Huawei Technologies Co., Ltd. 2002-2013. All rights reserved.
+
+  -----------------------------------------------------------------------------
+  User last login information:
+  -----------------------------------------------------------------------------
+  Access Type : Telnet 
+  IP-Address  : 10.1.99.251
+  Login  Time : 2018-09-25 14:45:15+08:00
+  Logout Time : 2018-09-25 14:45:16+08:00
+  -----------------------------------------------------------------------------
+
+SH-MLY-A01-T5608>enable
+
+SH-MLY-A01-T5608#config
+
+SH-MLY-A01-T5608(config)#display ont autofind all
+   ------------------------------------------------------------------------
+   Number              : 1
+   F/S/P               : 0/1/5
+   ONT NNI type        : 1G/1G
+   ONT MAC             : BC62-0EF7-A56D
+   Password            : 123
+   Loid                : 123
+   Checkcode           : 
+   VendorID            : HWTC
+   OUI version         : CTC3.0
+   ONT model           : 010H
+   ONT extended model  : HG8010H
+   ONT software version: V3R015C10S120
+   ONT hardware version: 635.A
+   ONT autofind time   : 2018-09-25 14:02:53+08:00
+   --------------------------------------------------------------------------
+   The number of EPON autofind ONT is 1
+
+SH-MLY-A01-T5608(config)#interface EPON 0/1
+
+SH-MLY-A01-T5608(config-if-epon-0/1)#ont add 5 mac-auth BC62-0EF7-A56D oam ont-l [1Dineprofile-id 100 ont-srvprofile-id 10 desc ad02115702
+  Number of ONTs that can be added: 1, success: 1
+  PortID :5, ONTID :0
+
+SH-MLY-A01-T5608(config-if-epon-0/1)# 
+
+SH-MLY-A01-T5608(config-if-epon-0/1)#ont port native-vlan 5 0 eth 1 vlan 2100
+
+SH-MLY-A01-T5608(config-if-epon-0/1)#quit
+
+SH-MLY-A01-T5608(config)#service-port  vlan 61 epon 0/1/5 ont 0 multi-service us [1Der-vlan 2100 tag-transform translate-and-add inner-vlan 2100 inner-priority 0
+{ <cr>|bundle<K>|inbound<K> }: 
+
+  Command:
+          service-port  vlan 61 epon 0/1/5 ont 0 multi-service user-vlan 2100 tag-transform translate-and-add inner-vlan 2100 inner-priority 0  
+
+SH-MLY-A01-T5608(config)#save
+{ <cr>|configuration<K>|data<K> }: 
+
+  Command:
+          save  
+
+SH-MLY-A01-T5608(config)#

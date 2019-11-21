@@ -1,0 +1,49 @@
+url="/var/www/html/rra/263/12650.rrd"
+
+fff=`echo $url | awk '{print NF}'`
+# 循环一个月
+for((i=1;i<=31;i++))
+do
+# 终止的时间
+criqi=`date +%s -d "2019-11-01 00:00:00"`
+eriqi=`date +%s -d "2019-11-01 23:59:00"`
+# 处理和计算时间
+ccriqi=`echo "$criqi - 86400 * $i" | bc`
+eeriqi=`echo "$eriqi - 86400 * $i" | bc`
+dt=`date -d "1970-01-01 UTC $eeriqi seconds" +%F`
+# 循环获取每天流量的最大值
+for((x=1;x<=$fff;x++))
+do
+uu=`echo $url | awk -v a=${x} '{print $a}'`
+/usr/local/bin/rrdtool fetch $uu MAX --start $ccriqi --end $eeriqi | sed -e '/^$/d' | grep -v "traffic_out" | awk '{printf "%f\n",$2}' | sed 's/\-nan/0.0000000000e+00/g' >> /tmp/test${x}
+done
+
+                          ff=`cat /tmp/test1 | wc -l`
+                          for((n=1;n<=$ff;n++))
+                           do
+                                for((y=1;y<=$fff;y++))
+                                do
+                                tt=`cat /tmp/test${y} | sed -n ${n}p`
+                                echo $tt >> /tmp/fud
+                                done
+                                aa=`cat /tmp/fud | awk '{sum+=$0}END{print sum}'`
+                                re=`echo "$aa" | awk '{sum=$0*8/1000000}END{printf "%.2f",sum}'`
+                                echo $re >> /tmp/testz
+                                rm -rf /tmp/fud
+                          done
+                                td=`cat /tmp/testz | sort -nr |  sed -n 1p`
+                                if [ `echo "$td > 1000" | bc` -eq 1 ];then
+                                tpt=`echo "scale=3;$td / 1000" | bc | awk '{printf "%.2f",$0}'`
+                                echo $tpt"G" $dt
+                                echo "$tpt"G" $dt" >> /root/Daily_traffic_peak.csv
+                                else
+                                echo $td"M" $dt
+                                echo "$td"M" $dt" >> /root/Daily_traffic_peak.csv
+                                fi
+ 
+for((b=1;b<=$fff;b++))
+do
+rm -rf /tmp/test${b}
+done
+rm -rf /tmp/testz
+done;
