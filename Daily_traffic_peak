@@ -15,7 +15,7 @@ dt=`date -d "1970-01-01 UTC $eeriqi seconds" +%F`
 for((x=1;x<=$fff;x++))
 do
 uu=`echo $url | awk -v a=${x} '{print $a}'`
-/usr/local/bin/rrdtool fetch $uu MAX --start $ccriqi --end $eeriqi | sed -e '/^$/d' | grep -v "traffic_out" | awk '{printf "%f\n",$2}' | sed 's/\-nan/0.0000000000e+00/g' >> /tmp/test${x}
+/usr/local/rrdtool/bin/rrdtool fetch $uu MAX --start $ccriqi --end $eeriqi | sed -e '/^$/d' | grep -v "traffic_out" | awk '{printf "%f\n",$2}' | sed 's/\-nan/0.0000000000e+00/g' >> /tmp/test${x}
 done
 
                           ff=`cat /tmp/test1 | wc -l`
