@@ -50,9 +50,11 @@ mv /home/Script/Backtest/S6720/10.200.1.7 /home/Script/Backtest/S6720/NJ_GWBN-67
 mv /home/Script/Backtest/S6720/10.200.1.8 /home/Script/Backtest/S6720/NJ-ZX-6720_`date "+%Y-%m-%d"`
 mv /home/Script/Backtest/S6720/10.205.5.2 /home/Script/Backtest/S6720/MaAnShan-XiangYun-6720-DX_`date "+%Y-%m-%d"`
 mv /home/Script/Backtest/S6720/10.202.1.20 /home/Script/Backtest/S6720/HZ-YD-2-H6720_`date "+%Y-%m-%d"`
+mv /home/Script/Backtest/S6720/10.201.1.17 /home/Script/Backtest/S6720/SH-CBL-S6720_`date "+%Y-%m-%d"`
 #
 #
 mv /home/Script/Backtest/CE6870/10.200.1.3 /home/Script/Backtest/CE6870/NJ-03-JQ-CE6870_`date "+%Y-%m-%d"`
+mv /home/Script/Backtest/CE6870/10.200.1.4 /home/Script/Backtest/CE6870/NJ-JQ-DX6851_`date "+%Y-%m-%d"`
 mv /home/Script/Backtest/CE6870/10.200.10.1 /home/Script/Backtest/CE6870/YZ-CE6870_`date "+%Y-%m-%d"`
 mv /home/Script/Backtest/CE6870/10.200.2.6 /home/Script/Backtest/CE6870/WX-CMCC-L14-CE6870_`date "+%Y-%m-%d"`
 mv /home/Script/Backtest/CE6870/10.200.4.3 /home/Script/Backtest/CE6870/CZ-01-G09-CE6870-A_`date "+%Y-%m-%d"`
