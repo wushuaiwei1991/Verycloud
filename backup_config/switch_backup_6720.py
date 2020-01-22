@@ -4,7 +4,7 @@ def do_telnet(Host,username,password,finish,commands):
         import time
         for Host in Hosts:
                 try:
-                        tn = telnetlib.Telnet(Host, port=2323, timeout=10)
+                        tn = telnetlib.Telnet(Host, port=23, timeout=10)
                 except:
                         print ("Can't connection")
                         e = 'echo "%s can not connection" |  mail -s "Backup failed"   501874532@qq.com,631082262@qq.com' % Host

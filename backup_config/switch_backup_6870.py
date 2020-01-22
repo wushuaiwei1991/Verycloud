@@ -4,7 +4,7 @@ def do_telnet(Host,username,password,finish,commands):
         import time
         for Host in Hosts:
                 try:
-                        tn = telnetlib.Telnet(Host, port=2323, timeout=10)
+                        tn = telnetlib.Telnet(Host, port=23, timeout=10)
                 except:
                         print ("Can't connection")
                         e = 'echo "%s can not connection" |  mail -s "Backup failed"   501874532@qq.com,631082262@qq.com' % Host
@@ -27,7 +27,7 @@ def do_telnet(Host,username,password,finish,commands):
                 tem.close()
                 tn.close()
 if __name__=='__main__':
-        Hosts = ['10.200.1.3','10.200.10.1','10.200.2.6','10.200.4.3','10.200.5.1','10.200.6.3','10.200.6.4','10.200.7.1','10.200.7.2','10.200.8.1','10.201.1.2','10.201.1.24','10.201.1.8','10.202.1.2','10.202.4.1','10.202.5.1','10.202.7.1','10.200.11.1','10.205.5.3']
+        Hosts = ['10.200.1.3','10.200.1.4','10.200.10.1','10.200.2.6','10.200.4.3','10.200.5.1','10.200.6.3','10.200.6.4','10.200.7.1','10.200.7.2','10.200.8.1','10.201.1.2','10.201.1.24','10.201.1.8','10.202.1.2','10.202.4.1','10.202.5.1','10.202.7.1','10.200.11.1','10.205.5.3']
         username = 'backup'
         password = 'jianchi189'
         finish = ''
