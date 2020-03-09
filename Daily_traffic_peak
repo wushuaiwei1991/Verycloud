@@ -1,5 +1,12 @@
-url="/var/www/html/rra/109/7833.rrd"
-
+#!/bin/bash
+#nanjing
+#url="/var/www/html/cacti/rra/nj-jq-dx6851_traffic_in_242.rrd"
+#shanghai
+#url="/var/www/html/cacti/rra/sh-pbs-h6720_traffic_in_201.rrd"
+#zaozhuang
+#url="/var/www/html/cacti/rra/zaoz-gmhy-s6720_traffic_in_295.rrd"
+#MaAnShan_CTC
+url="/var/www/html/cacti/rra/mas_ysxc-dx-6855_traffic_in_302.rrd"
 fff=`echo $url | awk '{print NF}'`
 # 循环一个月
 for((i=1;i<=31;i++))
