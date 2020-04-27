@@ -1,0 +1,100 @@
+作者：匿名用户
+链接：https://www.zhihu.com/question/22162646/answer/128942673
+来源：知乎
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>导航</title>
+<style>
+html, body{height:100%; width:100%; margin:0; padding:0;}
+body {line-height:1.5; font-family: 微软雅黑; background:-webkit-gradient(linear, left top, left bottom, from(#eee), to(#fff));}
+.nav {border:solid 1px #B8D4B8; margin-bottom:20px; border-radius: 5px; background-color: #fff;}
+.nav:hover {box-shadow: 0 5px 30px #999;}
+.nav h3 {margin:0; background-color:#836FFF; padding:5px 10px; font-weight:normal; font-size:16px;}
+.nav h3 i {font-style:normal; padding-left:10px; color:red;}
+.clear {clear:both; height:15px;}
+.nav a {float:left; width:150px; margin-top:15px; margin-left:10px; text-align:center; text-decoration: none;}
+.nav a:hover {text-decoration: none; color:red;}
+.nav a i {font-style:normal; color:#999; font-size:9px; position: relative; top:-10px; left:0px; padding:1px 3px;}
+</style>
+
+<script>
+$(function(){
+$('.nav a').each(function(){
+var href = $(this).attr('href');
+var count = window.localStorage.getItem(href);
+count = count || 0;
+$(this).append('<i>' + count + '</i>');
+$(this).attr('target', '_blank');
+$(this).click(function(){
+var count = parseInt($(this).find('i').html()) + 1;
+$(this).find('i').html(count);
+window.localStorage.setItem(href, count);
+console.log(count);
+});
+$(this).hover(function(){
+$(this).parents('.nav').find('h3 i').html($(this).attr('href'));
+}, function(){
+$(this).parents('.nav').find('h3 i').html('');
+});
+});
+});
+</script>
+</head>
+<body>
+<div style="max-width:1000px; margin:10px auto;">
+
+<div class="nav">
+<h3>类别一 <i></i></h3>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+
+<div class="clear"></div>
+</div>
+
+<div class="nav">
+<h3>类别二 <i></i></h3>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<div class="clear"></div>
+</div>
+
+<div class="nav">
+<h3>类别三<i></i></h3>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<a href="http://www.网址.com">网址</a>
+<div class="clear"></div>
+</div>
+
+</div>
+</body>
+</html>
