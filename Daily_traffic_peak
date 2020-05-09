@@ -1,19 +1,19 @@
 #!/bin/bash
-#nanjing
-#url="/var/www/html/cacti/rra/nj-jq-dx6851_traffic_in_242.rrd"
-#shanghai
-#url="/var/www/html/cacti/rra/sh-pbs-h6720_traffic_in_201.rrd"
-#zaozhuang
-#url="/var/www/html/cacti/rra/zaoz-gmhy-s6720_traffic_in_295.rrd"
-#MaAnShan_CTC
+# nanjing
+# url="/var/www/html/cacti/rra/nj-jq-dx6851_traffic_in_242.rrd"
+# shanghai
+# url="/var/www/html/cacti/rra/sh-pbs-h6720_traffic_in_201.rrd"
+# zaozhuang
+# url="/var/www/html/cacti/rra/zaoz-gmhy-s6720_traffic_in_295.rrd"
+# MaAnShan_CTC
 url="/var/www/html/cacti/rra/mas_ysxc-dx-6855_traffic_in_302.rrd"
 fff=`echo $url | awk '{print NF}'`
 # 循环一个月
 for((i=1;i<=31;i++))
 do
 # 终止的时间
-criqi=`date +%s -d "2019-12-01 00:00:00"`
-eriqi=`date +%s -d "2019-12-01 23:59:00"`
+criqi=`date +%s -d "2020-05-01 00:00:00"`
+eriqi=`date +%s -d "2020-05-01 23:59:00"`
 # 处理和计算时间
 ccriqi=`echo "$criqi - 86400 * $i" | bc`
 eeriqi=`echo "$eriqi - 86400 * $i" | bc`
@@ -22,7 +22,7 @@ dt=`date -d "1970-01-01 UTC $eeriqi seconds" +%F`
 for((x=1;x<=$fff;x++))
 do
 uu=`echo $url | awk -v a=${x} '{print $a}'`
-/usr/local/rrdtool/bin/rrdtool fetch $uu MAX --start $ccriqi --end $eeriqi | sed -e '/^$/d' | grep -v "traffic_out" | awk '{printf "%f\n",$2}' | sed 's/\-nan/0.0000000000e+00/g' >> /tmp/test${x}
+/usr/local/bin/rrdtool fetch $uu MAX --start $ccriqi --end $eeriqi | sed -e '/^$/d' | grep -v "traffic_in" | awk '{printf "%f\n",$2}' | sed 's/\-nan/0.0000000000e+00/g' >> /tmp/test${x}
 done
 
                           ff=`cat /tmp/test1 | wc -l`
