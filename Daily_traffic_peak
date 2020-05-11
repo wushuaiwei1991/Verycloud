@@ -11,13 +11,13 @@ fff=`echo $url | awk '{print NF}'`
 # 循环一个月
 for((i=1;i<=31;i++))
 do
-# 终止的时间
-criqi=`date +%s -d "2020-05-01 00:00:00"`
-eriqi=`date +%s -d "2020-05-01 23:59:00"`
+# 起始的时间
+criqi=`date +%s -d "2020-03-31 00:00:00"`
+eriqi=`date +%s -d "2020-03-31 23:59:00"`
 # 处理和计算时间
-ccriqi=`echo "$criqi - 86400 * $i" | bc`
-eeriqi=`echo "$eriqi - 86400 * $i" | bc`
-dt=`date -d "1970-01-01 UTC $eeriqi seconds" +%F`
+ccriqi=`echo "$criqi + 86400 * $i" | bc`
+eeriqi=`echo "$eriqi + 86400 * $i" | bc`
+dt=`date -d "1970-01-01 UTC $ccriqi seconds" +%F`
 # 循环获取每天流量的最大值
 for((x=1;x<=$fff;x++))
 do
@@ -27,6 +27,7 @@ done
 
                           ff=`cat /tmp/test1 | wc -l`
                           for((n=1;n<=$ff;n++))
+                          # 计算几个流量图的流量总和
                            do
                                 for((y=1;y<=$fff;y++))
                                 do
@@ -38,14 +39,17 @@ done
                                 echo $re >> /tmp/testz
                                 rm -rf /tmp/fud
                           done
+                                # 时间的输出
                                 td=`cat /tmp/testz | sort -nr |  sed -n 1p`
                                 if [ `echo "$td > 1000" | bc` -eq 1 ];then
+                                # 流量的输出
                                 tpt=`echo "scale=3;$td / 1000" | bc | awk '{printf "%.2f",$0}'`
-                                echo $tpt"G" $dt
-                                echo "$tpt"G" $dt" >> /root/Daily_traffic_peak.csv
+                                # 按时间，流量的输出格式分2列放入csv
+                                echo $dt,$tpt"G" 
+                                echo "$dt,$tpt"G"" >> /root/Daily_traffic_peak.csv
                                 else
-                                echo $td"M" $dt
-                                echo "$td"M" $dt" >> /root/Daily_traffic_peak.csv
+                                echo $dt,$td"M" 
+                                echo "$dt,$td"M"" >> /root/Daily_traffic_peak.csv
                                 fi
  
 for((b=1;b<=$fff;b++))
