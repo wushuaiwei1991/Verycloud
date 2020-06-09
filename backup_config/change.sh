@@ -48,6 +48,9 @@ mv /home/Script/Backtest/S6720/10.201.1.17 /home/Script/Backtest/S6720/SH-CBL-S6
 mv /home/Script/Backtest/S6720/10.200.1.9 /home/Script/Backtest/S6720/NJFH-C11-H6720-A_`date "+%Y-%m-%d"`
 mv /home/Script/Backtest/S6720/10.200.11.1 /home/Script/Backtest/S6720/ZJ-CRC-A01-S6720_`date "+%Y-%m-%d"`
 mv /home/Script/Backtest/S6720/10.205.5.4 /home/Script/Backtest/S6720/MAS-YSXC-S6720_`date "+%Y-%m-%d"`
+mv /home/Script/Backtest/S6720/10.200.3.1 /home/Script/Backtest/S6720/XuZ-CY-A01-S6720_`date "+%Y-%m-%d"`
+mv /home/Script/Backtest/S6720/10.205.5.5 /home/Script/Backtest/S6720/MAS-TY-S6720_`date "+%Y-%m-%d"`
+
 #
 #
 mv /home/Script/Backtest/CE6870/10.200.1.3 /home/Script/Backtest/CE6870/NJ-03-JQ-CE6870_`date "+%Y-%m-%d"`
